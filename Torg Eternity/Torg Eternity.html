@@ -1,9 +1,10 @@
-<div class="record"><img height="25" width="75" src="https://s3.amazonaws.com/files.d20.io/images/3792926/fZmnHs3Mz7uTZ8C3uic84A/med.gif?1398003568"/> <br/>
+
+           <div class="record"><img height="25" width="75" src="https://s3.amazonaws.com/files.d20.io/images/3792926/fZmnHs3Mz7uTZ8C3uic84A/med.gif?1398003568"/> <br/>
 Eternity
             <!-- Character Record Sheet -->
 </div>
 <input type="radio" name="attr_tab" class="sheet-tab sheet-tab1" value="1" title="Home" checked="checked" />
-<input type="radio" name="attr_tab" class="sheet-tab sheet-tab6" value="6" title="Equipment" />
+<input type="radio" name="attr_tab" class="sheet-tab sheet-tab6" value="6" title="Notes" />
 <input type="radio" name="attr_tab" class="sheet-tab sheet-tab3" value="3" title="Perks" />
 <input type="radio" name="attr_tab" class="sheet-tab sheet-tab4" value="4" title="Powers" />
 <!-- <input type="radio" name="attr_tab" class="sheet-tab sheet-tab2" value="2" title="NPC" /> -->
@@ -41,20 +42,21 @@ Eternity
                 </tr>	
 			</table>
             <table class="spacing">
-                <tr colspan="5"></tr>
-                <tr><th>Possibilities</th><th>XP Unspent/Total</th><th>Clearance</th>  <th>Magic</th> <th>Social</th><th>Spiritual</th><th>Tech</th>  </tr>
+                <tr colspan="10"></tr>
+                <tr><th>Possibilities</th> <th>CV</th> <th>XP Unspent/Total</th> <th>Walk/Run</th> <th>XP Toughness/Armor</th> <th>Magic</th> <th>Social</th><th>Spiritual</th><th>Tech</th>  </tr>
                 <tr>
     				<td>
     				    <input type="number" name="attr_Possib" value="3" title="Possibilties" />
     				    <button type="roll" name="possibility-roll" value="&{template:possibility} {{previousroll=?{PreviousRoll}}} {{newroll=[[?{PreviousRoll}+({1d20!10!!20cs10cs,10 + 0d0}kh1)]]}}" />
     				</td>
+    				<td width="10%"><input type="number" name="attr_CV" value="0" title="CyberValue" /></td>
     				<td><input type="number" name="attr_UnspentXP" value="0" title="Unspent XP"> / <input type="number" name="attr_TotalXP" value="0" title="Total XP"></td>
-    				<td><input type="text" name="attr_Clearance" title="Clearance"></td>
-					<td width="7%"><input type="number" name="attr_Magic" value="0"  title="Magic" /></td>
-					<td width="7%"><input type="number" name="attr_Social" value="0" title="Social"  /></td>
-                    <td width="7%"><input type="number" name="attr_Spiritual" value="0"  title="Spiritual" /></td>
-    				<td width="7%"><input type="number" name="attr_Tech" value="0" title="Tech"  /></td>
-				</tr>
+    				<td width="15%"><input type="number" name="attr_Movement" value="0" title="Movement" />/<input type="number" name="attr_Run" value="0" title="Movement Max" /></td>
+    				<td width="15%"><input type="number" name="attr_Toughness" value="0" title="Toughness" />/<input type="number" name="attr_TotalArmor" value="0" title="Movement Max" /></td>
+					<td width="5%"><input type="number" name="attr_Magic" value="0"  title="Magic" /></td>
+					<td width="5%"><input type="number" name="attr_Social" value="0" title="Social"  /></td>
+                    <td width="5%"><input type="number" name="attr_Spiritual" value="0"  title="Spiritual" /></td>
+    				<td width="5%"><input type="number" name="attr_Tech" value="0" title="Tech"  /></td></tr>
             </table>
 </div>
 	<hr/>
@@ -62,40 +64,51 @@ Eternity
 		<div class="col">
 			<table class="spacing">
 			  <tbody>
-				<tr><td><div class="textHeadsm"><b>Attributes</b></div></td>	
+				<tr><td><div class="textHeadsm"><b>Attributes</b></div></td>
+				<td><div class="textHeadsm">Base</div></td>
+			   	<td><div class="textHeadsm">Modifier</div></td>
     			 <td><div class="textHeadsm">Value</div></td>
                  <!-- <td><div class="textHeadsm">Approved Actions</div></td>   -->
 				</tr>
-				<tr>
-    				<td class="col1">DEXTERITY</td>
-					<td><input type="number" name="attr_DEX" value="8" title="Dexterity" /></td>
-					<td><button type="roll" name="dexterity-test" value="&{template:skill} {{name=Dexterity}} {{value=[[@{DEX}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{DEX})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-                    <!-- <td class="col1">Maneuver</td> -->
-				</tr>
-                <tr>
-					<td class="col1">STRENGTH</td>
-					<td><input type="number" name="attr_STR" value="8" title="Strength" /></td>
-					<td><button type="roll" name="strength-test" value="&{template:skill} {{name=Strength}} {{value=[[@{STR}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{STR})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+								    <tr>
+					<td class="col1">CHARISMA</td>
+					<td><input type="number" name="attr_CHABase" value="8" title="CharismaBase" /></td>
+					<td><input type="number" name="attr_CHAMod" value="0" title="CharismaMod" /></td>
+					<td><input type="number" name="attr_CHA" value="@{CHABase}+@{CHAMod}" disabled="true"  class="3" /></td>
+					<td><button type="roll" name="charisma-test" value="&{template:skill} {{name=Charisma}} {{value=[[@{CHA}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{CHA})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+				    <!-- <td class="col1">Taunt</td> -->
+    			</tr>
+    			<tr>
+    			<td class="col1">DEXTERITY</td>
+    				<td><input type="number" name="attr_DEXBase" value="8" title="DexterityBase" /></td>
+    				<td><input type="number" name="attr_DEXMod" value="0" title="DexterityMod" /></td>
+					<td><input type="number" name="attr_DEX" value="@{DEXBase}+@{DEXMod}" disabled="true"  class="3" /></td>							
+    				<td><button type="roll" name="dexterity-test" value="&{template:skill} {{name=Dexterity}} {{value=[[@{DEX}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{DEX})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td><!-- <td class="col1">Maneuver</td> -->
 				</tr>
 				<tr>
 					<td class="col1">MIND</td>
-					<td><input type="number" name="attr_MIN" value="8" title="Mind" /></td>
+					<td><input type="number" name="attr_MINBase" value="8" title="MindBase" /></td>
+					<td><input type="number" name="attr_MINMod" value="0" title="MindMod" /></td>
+					<td><input type="number" name="attr_MIN" value="@{MINBase}+@{MINMod}" disabled="true"  class="3" /></td>
 					<td><button type="roll" name="mind-test" value="&{template:skill} {{name=Mind}} {{value=[[@{MIN}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{MIN})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
 				    <!-- <td class="col1">Test</td> -->
 				</tr>
 				<tr>
-					<td class="col1">CHARISMA</td>
-					<td><input type="number" name="attr_CHA" value="8" title="Charisma" /></td>
-					<td><button type="roll" name="charisma-test" value="&{template:skill} {{name=Charisma}} {{value=[[@{CHA}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{CHA})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-				    <!-- <td class="col1">Taunt</td> -->
-    			</tr>
-                <tr>
     				<td class="col1">SPIRIT</td>
-					<td><input type="number" name="attr_SPI" value="8" title="Spirit" /></td>
+					<td><input type="number" name="attr_SPIBase" value="8" title="SpiritBase" /></td>
+					<td><input type="number" name="attr_SPIMod" value="0" title="SpiritMod" /></td>
+					<td><input type="number" name="attr_SPI" value="@{SPIBase}+@{SPIMod}" disabled="true"  class="3" /></td>
 					<td><button type="roll" name="spirit-test" value="&{template:skill} {{name=Spirit}} {{value=[[@{SPI}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{SPI})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
 				    <!-- <td class="col1">Intimidate</td> -->
     			</tr>
-<!--                <tr>
+                <tr>
+					<td class="col1">STRENGTH</td>
+					<td><input type="number" name="attr_STRBase" value="8" title="StrengthBase" /></td>
+					<td><input type="number" name="attr_STRMod" value="0" title="StrengthMod" /></td>
+					<td><input type="number" name="attr_STR" value="@{STRBase}+@{STRMod}" disabled="true"  class="3" /></td>
+					<td><button type="roll" name="strength-test" value="&{template:skill} {{name=Strength}} {{value=[[@{STR}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{STR})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+				</tr>
+				<!--                <tr>
                     <td></td>
                     <td></td>
                     <td class="col1">Reality</td>
@@ -120,21 +133,21 @@ Eternity
 			    </tbody>
 			</table>
 			<table class="spacing">
-				<tr colspan="4"></tr>
-					<tr>	<th width="50%">Armor</th>		<th class="small">Modifier<br /></th>		<th class="small">Value<br /></th>		<th class="small">Axiom<br />Level</th>			</tr>
+			<tr colspan="5"></tr>
+					<tr>	<th width="100%">Armor</th>			<th class="small">Value<br /></th>		<th class="small">Fatigue<br /></th>  <th class="small">Axiom<br />Level</th>	 <th class="small">MaxDex<br />Level</th>		</tr>
 				<tr>
 					<td><input type="text" name="attr_Armor1Worn" style="width:100%" title="Armor Name" /></td>
-					<td><input type="number" name="attr_Armor1Mod" value="0"  title="Armor Modifier" /></td>
 					<td><input type="number" name="attr_Armor1Value" value="0" title="Armor Value"  /></td>
+					<td><input type="number" name="attr_Armor1Fatigue" value="0"  title="Armor Fatigue" /></td>
 					<td><input type="number" name="attr_Armor1Axiom" value="0"  title="Axiom Level" /></td>
-					
-				</tr>	
-			    <tr>
-    				<td><input type="text" name="attr_Armor2Worn" style="width:100%" title="Armor Name" /></td>
-					<td><input type="number" name="attr_Armor2Mod" value="0"  title="Armor Modifier" /></td>
-					<td><input type="number" name="attr_Armor2Value" value="0" title="Armor Value"  /></td>
-					<td><input type="number" name="attr_Armor2Axiom" value="0"  title="Axiom Level" /></td>
+					<td><input type="number" name="attr_Armor1MaxDex" value="0"  title="MaxDex Level" /></td>
 				</tr>
+				<tr>
+    				<td><input type="text" name="attr_Armor2Worn" style="width:100%" title="Armor Name" /></td>
+					<td><input type="number" name="attr_Armor2Value" value="0" title="Armor Value"  /></td>
+					<td><input type="number" name="attr_Armor2Fatigue" value="0"  title="Armor Fatigue" /></td>
+					<td><input type="number" name="attr_Armor2Axiom" value="0"  title="Axiom Level" /></td>
+					<td><input type="number" name="attr_Armor2MaxDex" value="0"  title="MaxDex Level" /></td></tr>
 			</table>
 		</div>
 		<div class="col">
@@ -146,23 +159,15 @@ Eternity
 				</tr>
 				<tr>
     				<td class="col1">Dodge</td>
-					<td><input type="number" name="attr_Dodge_Defense" value="@{DodgeMod}+@{DodgeAdds}" disabled="true"  class="skills" /></td>
+					<td><input type="number" name="attr_Dodge_Defense" value="@{dodgeAtt}+@{DodgeMod}+@{DodgeAdds}" disabled="true"  class="skills" /></td>
 				</tr>
                 <tr>
 					<td class="col1">Melee</td>
-					<td><input type="number" name="attr_Melee_Defense" value="@{MeleeCombatMod}+@{MeleeCombatAdds}" disabled="true" class="skills" /></td>
+					<td><input type="number" name="attr_Melee_Defense" value="@{MeleeCombatAtt}+@{MeleeCombatMod}+@{MeleeCombatAdds}" disabled="true" class="skills" /></td>
 				</tr>
 				<tr>
 					<td class="col1">Unarmed</td>
-					<td><input type="number" name="attr_Unarmed_Defense" value="@{UnarmedCombatMod}+@{UnarmedCombatAdds}" disabled="true" class="skills" /></td>
-				</tr>
-				<tr>
-					<td class="col1">Toughness</td>
-					<td><input type="number" name="attr_Toughness" value="" title="Climbing" /></td>
-				</tr>
-				<tr>
-					<td class="col1">Armor</td>
-					<td><input type="number" name="attr_Armor" value="" title="Lifting" /></td>
+					<td><input type="number" name="attr_Unarmed_Defense" value="@{UnarmedCombatAtt}+@{UnarmedCombatMod}+@{UnarmedCombatAdds}" disabled="true" class="skills" /></td>
 				</tr>
 			  </tbody>
 			</table>
@@ -178,204 +183,105 @@ Eternity
 						<tr>
 							<th>Skill</th>
 							<th>Adds</th>
+							<th>Mods</th>
 							<th>Attr</th>					
 							<th>Value</th>
 						</tr>
 					</thead>						
             			<tbody>
+            			    <tr>
+    					<td class="skillsCol1">Dodge</td>
+    					<td><input type="number" value="0" name="attr_DodgeAdds" title="Adds" /></td> <!-- Skill Training -->
+    					<td><input type="number" value="0" name="attr_DodgeMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_DodgeAtt" class="modtype" title="Skill Modifier">
+    						  <option value="@{DEX}"selected>DEX</option>
+                              <option value="@{STR}">STR</option>
+    						  <option value="@{MIN}">MIN</option>
+    						  <option value="@{CHA}">CHA</option>
+                              <option value="@{SPI}">SPI</option>
+    						</select></td>
+    					<td><input type="number" name="attr_Dodge" value="@{DodgeAtt}+@{DodgeMod}+@{DodgeAdds}" disabled="true"  class="skills" /></td>
+    					<td><button type="roll" name="dodge_test" value="&{template:skill} {{name=Dodge}} {{value=[[@{Dodge}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Dodge})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				</tr>
             				<tr>
             					<td class="skillsCol1">Energy Weapons</td>
-            					<td><input type="number" value="0" name="attr_EnergyWeaponAdds" title="Adds" /></td> <!-- Skill Training -->
-                                <td><select name="attr_EnergyWeaponMod" class="modtype" title="Skill Modifier">
+            					<td><input type="number" value="0" name="attr_EnergyWeaponsAdds" title="Adds" /></td> <!-- Skill Training -->
+            					<td><input type="number" value="0" name="attr_EnergyWeaponsMod" title="Adds" /></td> <!-- Skill Training -->
+                                <td><select name="attr_EnergyWeaponsAtt" class="modtype" title="Skill Modifier">
             						  <option value="@{DEX}" selected>DEX</option>
                                       <option value="@{STR}">STR</option>
             						  <option value="@{MIN}">MIN</option>
             						  <option value="@{CHA}">CHA</option>
                                       <option value="@{SPI}">SPI</option>
             						</select></td>
-            					<td><input type="number" name="attr_EnergyWeapon" value="@{EnergyWeaponMod}+@{EnergyWeaponAdds}" disabled="true"  class="skills" /></td>
-            					<td><button type="roll" name="EnergyWeapon_attack" value="&{template:skill} {{name=Energy Weapon}} {{value=[[@{EnergyWeapon}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{EnergyWeapon})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+            					<td><input type="number" name="attr_EnergyWeapons" value="@{EnergyWeaponsAtt}+@{EnergyWeaponsMod}+@{EnergyWeaponsAdds}" disabled="true"  class="skills" /></td>
+            					<td><button type="roll" name="EnergyWeapons_attack" value="&{template:skill} {{name=Energy Weapons}} {{value=[[@{EnergyWeapons}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{EnergyWeapons})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
             				</tr>				
             				<tr>
             					<td class="skillsCol1">Fire Combat</td>
             					<td><input type="number" value="0" name="attr_FireCombatAdds" title="Adds" /></td> <!-- Skill Training -->
-                                <td><select name="attr_FireCombatMod" class="modtype" title="Skill Modifier">
+            					<td><input type="number" value="0" name="attr_FireCombatMod" title="Adds" /></td> <!-- Skill Training -->
+                                <td><select name="attr_FireCombatAtt" class="modtype" title="Skill Modifier">
             						  <option value="@{DEX}" selected>DEX</option>
                                       <option value="@{STR}">STR</option>
             						  <option value="@{MIN}">MIN</option>
             						  <option value="@{CHA}">CHA</option>
                                       <option value="@{SPI}">SPI</option>
             						</select></td>
-            					<td><input type="number" name="attr_FireCombat" value="@{FireCombatMod}+@{FireCombatAdds}" disabled="true"  class="skills" /></td>
+            					<td><input type="number" name="attr_FireCombat" value="@{FireCombatAtt}+@{FireCombatMod}+@{FireCombatAdds}" disabled="true"  class="skills" /></td>
             					<td><button type="roll" name="FireCombat_attack" value="&{template:skill} {{name=Fire Combat}} {{value=[[@{FireCombat}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{FireCombat})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
             				</tr>				
             				<tr>
             					<td class="skillsCol1">Melee Combat</td>
             					<td><input type="number" value="0" name="attr_MeleeCombatAdds" title="Adds" /></td> <!-- Skill Training -->
-                                <td><select name="attr_MeleeCombatMod" class="modtype" title="Skill Modifier">
+            					<td><input type="number" value="0" name="attr_MeleeCombatMod" title="Adds" /></td> <!-- Skill Training -->
+                                <td><select name="attr_MeleeCombatAtt" class="modtype" title="Skill Modifier">
             						  <option value="@{DEX}" selected>DEX</option>
                                       <option value="@{STR}">STR</option>
             						  <option value="@{MIN}">MIN</option>
             						  <option value="@{CHA}">CHA</option>
                                       <option value="@{SPI}">SPI</option>
             						</select></td>
-            					<td><input type="number" name="attr_MeleeCombat" value="@{MeleeCombatMod}+@{MeleeCombatAdds}" disabled="true"  class="skills" /></td>
+            					<td><input type="number" name="attr_MeleeCombat" value="@{MeleeCombatAtt}+@{MeleeCombatMod}+@{MeleeCombatAdds}" disabled="true"  class="skills" /></td>
             					<td><button type="roll" name="MeleeCombat_attack" value="&{template:skill} {{name=Melee Combat}} {{value=[[@{MeleeCombat}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{MeleeCombat})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
             				</tr>				
             				<tr>
             					<td class="skillsCol1">Missile Weapons</td>
             					<td><input type="number" value="0" name="attr_MissileWeaponAdds" title="Adds" /></td> <!-- Skill Training -->
-                                <td><select name="attr_MissileWeaponMod" class="modtype" title="Skill Modifier">
+            					<td><input type="number" value="0" name="attr_MissileWeaponMod" title="Adds" /></td> <!-- Skill Training -->
+                                <td><select name="attr_MissileWeaponAtt" class="modtype" title="Skill Modifier">
             						  <option value="@{DEX}" selected>DEX</option>
                                       <option value="@{STR}">STR</option>
             						  <option value="@{MIN}">MIN</option>
             						  <option value="@{CHA}">CHA</option>
                                       <option value="@{SPI}">SPI</option>
             						</select></td>
-            					<td><input type="number" name="attr_MissileWeapon" value="@{MissileWeaponMod}+@{MissileWeaponAdds}" disabled="true"  class="skills" /></td>
+            					<td><input type="number" name="attr_MissileWeapon" value="@{MissileWeaponAtt}+@{MissileWeaponMod}+@{MissileWeaponAdds}" disabled="true"  class="skills" /></td>
             					<td><button type="roll" name="MissileWeapon_attack" value="&{template:skill} {{name=Missile Weapon}} {{value=[[@{MissileWeapon}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{MissileWeapon})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
             				</tr>				
             				<tr>
             					<td class="skillsCol1">Unarmed Combat</td>
             					<td><input type="number" value="0" name="attr_UnarmedCombatAdds" title="Adds" /></td> <!-- Skill Training -->
-                                <td><select name="attr_UnarmedCombatMod" class="modtype" title="Skill Modifier">
+            					<td><input type="number" value="0" name="attr_UnarmedCombatMod" title="Adds" /></td> <!-- Skill Training -->
+                                <td><select name="attr_UnarmedCombatAtt" class="modtype" title="Skill Modifier">
             						  <option value="@{DEX}" selected>DEX</option>
                                       <option value="@{STR}">STR</option>
             						  <option value="@{MIN}">MIN</option>
             						  <option value="@{CHA}">CHA</option>
                                       <option value="@{SPI}">SPI</option>
             						</select></td>
-            					<td><input type="number" name="attr_UnarmedCombat" value="@{UnarmedCombatMod}+@{UnarmedCombatAdds}" disabled="true"  class="skills" /></td>
+            					<td><input type="number" name="attr_UnarmedCombat" value="@{UnarmedCombatAtt}+@{UnarmedCombatMod}+@{UnarmedCombatAdds}" disabled="true"  class="skills" /></td>
             					<td><button type="roll" name="UnarmedCombat_attack" value="&{template:skill} {{name=Unarmed Combat}} {{value=[[@{UnarmedCombat}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{UnarmedCombat})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
             				</tr>
             			</tbody>
                 </table>
-           <tr><td><div class="textHead"><b>Power-Related Skills</b></div></td></tr>
+           <tr><td><div class="textHead"><b>Interaction Skills</b></div></td></tr>
 			<table>
 				<thead>
 					<tr>
 						<th>Skill</th>
 						<th>Adds</th>
-						<th>Attr</th>					
-						<th>Value</th>
-<!--						Column Reserved for Roll Button, e.g. <th>Roll</th> -->
-					</tr>
-				</thead>						
-    			<tbody>
-            		<tr>
-    					<td class="skillsCol1">Alteration</td>
-    					<td><input type="number" value="0" name="attr_AlterationAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_AlterationMod" class="modtype" title="Skill Modifier">
-    						  <option value="@{DEX}">DEX</option>
-                              <option value="@{STR}">STR</option>
-    						  <option value="@{MIN}" selected>MIN</option>
-    						  <option value="@{CHA}">CHA</option>
-                              <option value="@{SPI}">SPI</option>
-    						</select></td>
-    					<td><input type="number" name="attr_Alteration" value="@{AlterationMod}+@{AlterationAdds}" disabled="true"  class="skills" /></td>						
-                        <td><button type="roll" name="Alteration_roll" value="&{template:skill} {{name=Alteration}} {{value=[[@{Alteration}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Alteration})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-    				</tr>				
-    				<tr>
-    					<td class="skillsCol1">Apportation</td>
-    					<td><input type="number" value="0" name="attr_ApportationAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_ApportationMod" class="modtype" title="Skill Modifier">
-    						  <option value="@{DEX}">DEX</option>
-                              <option value="@{STR}">STR</option>
-    						  <option value="@{MIN}">MIN</option>
-    						  <option value="@{CHA}">CHA</option>
-                              <option value="@{SPI}" selected>SPI</option>
-    						</select></td>
-    					<td><input type="number" name="attr_Apportation" value="@{ApportationMod}+@{ApportationAdds}" disabled="true"  class="skills" /></td>						
-                        <td><button type="roll" name="Apportation_roll" value="&{template:skill} {{name=Apportation}} {{value=[[@{Apportation}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Apportation})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>    				
-    				</tr>				
-    				<tr>
-    					<td class="skillsCol1">Conjuration</td>
-    					<td><input type="number" value="0" name="attr_ConjurationAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_ConjurationMod" class="modtype" title="Skill Modifier">
-    						  <option value="@{DEX}">DEX</option>
-                              <option value="@{STR}">STR</option>
-    						  <option value="@{MIN}">MIN</option>
-    						  <option value="@{CHA}">CHA</option>
-                              <option value="@{SPI}" selected>SPI</option>
-    						</select></td>
-    					<td><input type="number" name="attr_Conjuration" value="@{ConjurationMod}+@{ConjurationAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Conjuration_roll" value="&{template:skill} {{name=Conjuration}} {{value=[[@{Conjuration}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Conjuration})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-    				</tr>				
-    				<tr>
-    					<td class="skillsCol1">Divination</td>
-    					<td><input type="number" value="0" name="attr_DivinationAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_DivinationMod" class="modtype" title="Skill Modifier">
-    						  <option value="@{DEX}">DEX</option>
-                              <option value="@{STR}">STR</option>
-    						  <option value="@{MIN}" selected>MIN</option>
-    						  <option value="@{CHA}">CHA</option>
-                              <option value="@{SPI}">SPI</option>
-    						</select></td>
-    					<td><input type="number" name="attr_Divination" value="@{DivinationMod}+@{DivinationAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Divination_roll" value="&{template:skill} {{name=Divination}} {{value=[[@{Divination}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Divination})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-    				</tr>	
-    				<tr>
-    					<td class="skillsCol1">Faith</td>
-    					<td><input type="number" value="0" name="attr_FaithAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_FaithMod" class="modtype" title="Skill Modifier">
-    						  <option value="@{DEX}">DEX</option>
-                              <option value="@{STR}">STR</option>
-    						  <option value="@{MIN}">MIN</option>
-    						  <option value="@{CHA}">CHA</option>
-                              <option value="@{SPI}" selected>SPI</option>
-    						</select></td>
-    					<td><input type="number" name="attr_Faith" value="@{FaithMod}+@{FaithAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Faith_roll" value="&{template:skill} {{name=Faith}} {{value=[[@{Faith}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Faith})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-    				</tr>				
-    				<tr>
-    					<td class="skillsCol1">Kinesis</td>
-    					<td><input type="number" value="0" name="attr_KinesisAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_KinesisMod" class="modtype" title="Skill Modifier">
-    						  <option value="@{DEX}">DEX</option>
-                              <option value="@{STR}">STR</option>
-    						  <option value="@{MIN}">MIN</option>
-    						  <option value="@{CHA}">CHA</option>
-                              <option value="@{SPI}" selected>SPI</option>
-    						</select></td>
-    					<td><input type="number" name="attr_Kinesis" value="@{KinesisMod}+@{KinesisAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Kinesis_roll" value="&{template:skill} {{name=Kinesis}} {{value=[[@{Kinesis}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Kinesis})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-    				</tr>				
-    				<tr>
-    					<td class="skillsCol1">Precognition</td>
-    					<td><input type="number" value="0" name="attr_PrecognitionAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_PrecognitionMod" class="modtype" title="Skill Modifier">
-    						  <option value="@{DEX}">DEX</option>
-                              <option value="@{STR}">STR</option>
-    						  <option value="@{MIN}" selected>MIN</option>
-    						  <option value="@{CHA}">CHA</option>
-                              <option value="@{SPI}">SPI</option>
-    						</select></td>
-    					<td><input type="number" name="attr_Precognition" value="@{PrecognitionMod}+@{PrecognitionAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Precognition_roll" value="&{template:skill} {{name=Precognition}} {{value=[[@{Precognition}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Precognition})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-    				</tr>				
-    				<tr>
-    					<td class="skillsCol1">Telepathy</td>
-    					<td><input type="number" value="0" name="attr_TelepathyAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_TelepathyMod" class="modtype" title="Skill Modifier">
-    						  <option value="@{DEX}">DEX</option>
-                              <option value="@{STR}">STR</option>
-    						  <option value="@{MIN}">MIN</option>
-    						  <option value="@{CHA}" selected>CHA</option>
-                              <option value="@{SPI}">SPI</option>
-    						</select></td>
-    					<td><input type="number" name="attr_Telepathy" value="@{TelepathyMod}+@{TelepathyAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Telepathy_roll" value="&{template:skill} {{name=Telepathy}} {{value=[[@{Telepathy}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Telepathy})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-    				</tr>				
-                </tbody>
-            </table>
-		</div>	
-    	<div class="col">
-            <tr><td><div class="textHead"><b>Interaction Skills</b></div></td></tr>
-			<table>
-				<thead>
-					<tr>
-						<th>Skill</th>
-						<th>Adds</th>
+						<th>Mods</th>
 						<th>Attr</th>					
 						<th>Value</th>
 <!--						Column Reserved for Roll Button, e.g. <th>Roll</th> -->
@@ -385,92 +291,120 @@ Eternity
             		<tr>
     					<td class="skillsCol1">Intimidate</td>
     					<td><input type="number" value="0" name="attr_IntimidateAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_IntimidateMod" class="modtype" title="Skill Modifier">
+    						<td><input type="number" value="0" name="attr_IntimidateMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_IntimidateAtt" class="modtype" title="Skill Modifier">
     						  <option value="@{DEX}">DEX</option>
                               <option value="@{STR}">STR</option>
     						  <option value="@{MIN}">MIN</option>
     						  <option value="@{CHA}">CHA</option>
                               <option value="@{SPI}" selected>SPI</option>
     						</select></td>
-    					<td><input type="number" name="attr_Intimidate" value="@{IntimidateMod}+@{IntimidateAdds}" disabled="true"  class="skills" /></td>						
+    					<td><input type="number" name="attr_Intimidate" value="@{IntimidateAtt}+@{IntimidateMod}+@{IntimidateAdds}" disabled="true"  class="skills" /></td>						
                         <td><button type="roll" name="intimidate_attack" value="&{template:skill} {{name=Intimidate}} {{value=[[@{Intimidate}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Intimidate})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Taunt</td>
     					<td><input type="number" value="0" name="attr_TauntAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_TauntMod" class="modtype" title="Skill Modifier">
+    					<td><input type="number" value="0" name="attr_TauntMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_TauntAtt" class="modtype" title="Skill Modifier">
     						  <option value="@{DEX}">DEX</option>
                               <option value="@{STR}">STR</option>
     						  <option value="@{MIN}">MIN</option>
     						  <option value="@{CHA}"selected>CHA</option>
                               <option value="@{SPI}">SPI</option>
     						</select></td>
-    					<td><input type="number" name="attr_Taunt" value="@{TauntMod}+@{TauntAdds}" disabled="true"  class="skills" /></td>						
+    					<td><input type="number" name="attr_Taunt" value="@{TauntAtt}+@{TauntMod}+@{TauntAdds}" disabled="true"  class="skills" /></td>						
                         <td><button type="roll" name="taunt_attack" value="&{template:skill} {{name=Taunt}} {{value=[[@{Taunt}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Taunt})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>    				
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Trick</td>
     					<td><input type="number" value="0" name="attr_TrickAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_TrickMod" class="modtype" title="Skill Modifier">
+    					<td><input type="number" value="0" name="attr_TrickMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_TrickAtt" class="modtype" title="Skill Modifier">
     						  <option value="@{DEX}">DEX</option>
                               <option value="@{STR}">STR</option>
     						  <option value="@{MIN}"selected>MIN</option>
     						  <option value="@{CHA}">CHA</option>
                               <option value="@{SPI}">SPI</option>
     						</select></td>
-    					<td><input type="number" name="attr_Trick" value="@{TrickMod}+@{TrickAdds}" disabled="true"  class="skills" /></td>						
+    					<td><input type="number" name="attr_Trick" value="@{TrickAtt}+@{TrickMod}+@{TrickAdds}" disabled="true"  class="skills" /></td>						
     				    <td><button type="roll" name="trick_attack" value="&{template:skill} {{name=Trick}} {{value=[[@{Trick}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Trick})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Maneuver</td>
     					<td><input type="number" value="0" name="attr_ManeuverAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_ManeuverMod" class="modtype" title="Skill Modifier">
+    					<td><input type="number" value="0" name="attr_ManeuverMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_ManeuverAtt" class="modtype" title="Skill Modifier">
     						  <option value="@{DEX}"selected>DEX</option>
                               <option value="@{STR}">STR</option>
     						  <option value="@{MIN}">MIN</option>
     						  <option value="@{CHA}">CHA</option>
                               <option value="@{SPI}">SPI</option>
     						</select></td>
-    					<td><input type="number" name="attr_Maneuver" value="@{ManeuverMod}+@{ManeuverAdds}" disabled="true"  class="skills" /></td>						
+    					<td><input type="number" name="attr_Maneuver" value="@{ManeuverAtt}+@{ManeuverMod}+@{ManeuverAdds}" disabled="true"  class="skills" /></td>						
     				    <td><button type="roll" name="maneuver_attack" value="&{template:skill} {{name=Maneuver}} {{value=[[@{Maneuver}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Maneuver})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-    				</tr>				
+    				</tr>
+            	</tbody>
+            </table>
+		</div>	
+    	<div class="col">
+            <tr><td><div class="textHead"><b>Reality</b></div></td></tr>
+			<table>
+				<thead>
+					<tr>
+						<th>Skill</th>
+						<th>Adds</th>
+						<th>Mods</th>
+						<th>Attr</th>					
+						<th>Value</th>
+<!--						Column Reserved for Roll Button, e.g. <th>Roll</th> -->
+					</tr>
+				</thead>						
+    			<tbody>
+            		<tr>
+    					<td class="skillsCol1">Reality</td>
+    					<td><input type="number" value="1" name="attr_RealityAdds" title="Adds" /></td> 
+                        <td><input type="number" value="1" name="attr_RealityMod" title="Adds" /></td> 
+    					<td><select name="attr_RealityAtt" class="modtype" title="Skill Modifier">
+    						  <option value="@{DEX}">DEX</option>
+                              <option value="@{STR}">STR</option>
+    						  <option value="@{MIN}">MIN</option>
+    						  <option value="@{CHA}"selected>CHA</option>
+                              <option value="@{SPI}">SPI</option>
+    						</select></td>
+    				<td><input type="number" name="attr_Reality" value="@{RealityAtt}+@{RealityMod}+@{RealityAdds}" disabled="true"  class="skills" /></td>  
+                    <td><button type="roll" name="reality_test" value="&{template:skill} {{name=Reality}} {{value=[[@{Reality}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Reality})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+                    
                 </tbody>
             </table>
      		<table>
     			<tr><div class="textHead">Other Skills</div></tr>
-    				<thead>
-    					<tr>
-    						<th>Skill</th>
-    						<th>Adds</th>
-    						<th>Attr</th>					
-    						<th>Value</th>
-    					</tr>
-    				</thead>						
-    			  <tbody>
-    				<tr>
-    					<td class="skillsCol1">Reality</td>
-    					<td><input type="number" value="1" name="attr_RealityAdds" title="Adds" /></td> 
-                        
-    					<td><select name="attr_RealityMod" class="modtype" title="Skill Modifier">
-    						  <option value="@{SPI}" selected>SPI</option>
-    						</select></td>
-    				<td><input type="number" name="attr_Reality" value="@{RealityMod}+@{RealityAdds}" disabled="true"  class="skills" /></td>  
-                    <td><button type="roll" name="reality_test" value="&{template:skill} {{name=Reality}} {{value=[[@{Reality}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Reality})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-                    <!-- Skill Training -->
-    				</tr>
-    				<tr>
-    					<td class="skillsCol1">Dodge</td>
-    					<td><input type="number" value="0" name="attr_DodgeAdds" title="Adds" /></td> <!-- Skill Training -->
-                        <td><select name="attr_DodgeMod" class="modtype" title="Skill Modifier">
-    						  <option value="@{DEX}"selected>DEX</option>
+    			<table>
+					<thead>
+						<tr>
+							<th>Skill</th>
+							<th>Adds</th>
+							<th>Mods</th>
+							<th>Attr</th>					
+							<th>Value</th>
+						</tr>
+					</thead>						
+            			<tbody>
+            			    <tr>
+    					<td class="skillsCol1">Find</td>
+    					<td><input type="number" value="0" name="attr_FindAdds" title="Adds" /></td> <!-- Skill Training -->
+    					<td><input type="number" value="0" name="attr_FindMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_FindAtt" class="modtype" title="Skill Modifier">
+    						  <option value="@{DEX}">DEX</option>
                               <option value="@{STR}">STR</option>
-    						  <option value="@{MIN}">MIN</option>
+    						  <option value="@{MIN}"selected>MIN</option>
     						  <option value="@{CHA}">CHA</option>
                               <option value="@{SPI}">SPI</option>
     						</select></td>
-    					<td><input type="number" name="attr_Dodge" value="@{DodgeMod}+@{DodgeAdds}" disabled="true"  class="skills" /></td>
-    					<td><button type="roll" name="dodge_test" value="&{template:skill} {{name=Dodge}} {{value=[[@{Dodge}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Dodge})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-    				</tr>				
+    					<td><input type="number" name="attr_Find" value="@{FindAtt}+@{FindMod}+@{FindAdds}" disabled="true"  class="skills" /></td>						
+    				    <td><button type="roll" name="Find_attack" value="&{template:skill} {{name=Find}} {{value=[[@{Find}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Find})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				</tr>	
+            			    <tr>
     			</tbody>
     		</table>
     		<fieldset class="repeating_skills">
@@ -479,14 +413,15 @@ Eternity
     			        <tr>
     			            <td class="skillsCol1"> <input type="text" style="width:100%" name="attr_RepeatingSkillName" /> </td>
     			            <td><input type="number" value="0" name="attr_RepeatingSkillAdds" title="Adds" /></td>
-    					    <td><select name="attr_RepeatingSkillMod" class="modtype" title="Skill Modifier">
+    			            <td><input type="number" value="0" name="attr_RepeatingSkillMod" title="Adds" /></td>
+    					    <td><select name="attr_RepeatingSkillAtt" class="modtype" title="Skill Modifier">
     						  <option value="@{DEX}" selected>DEX</option>
                               <option value="@{STR}">STR</option>
     						  <option value="@{MIN}">MIN</option>
     						  <option value="@{CHA}">CHA</option>
                               <option value="@{SPI}">SPI</option>
     						</select></td>
-    					    <td><input type="number" name="attr_RepeatingSkill" value="@{RepeatingSkillMod}+@{RepeatingSkillAdds}" disabled="true"  class="skills" /></td>	
+    					    <td><input type="number" name="attr_RepeatingSkill" value="@{RepeatingSkillAtt}+@{RepeatingSkillMod}+@{RepeatingSkillAdds}" disabled="true"  class="skills" /></td>	
                             <td><button type="roll" name="repeating_skill" value="&{template:skill} {{name=@{RepeatingSkillName}}} {{value=[[@{RepeatingSkill}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{RepeatingSkill})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     			        </tr>   
     			    </tbody>
@@ -524,11 +459,19 @@ Eternity
     			            <td style="width:3%"><input type="number" value="0" name="attr_RepeatingWeaponAxiom" title="RepeatingWeaponAxiom" /></td>
     			            <td style="width:17%">
     			                <select  name="attr_RepeatingWeaponSkill" class="modtype" title="Skill Used" style="width:100%">
-    			                    <option value="@{EnergyWeapon}">Energy Weapons</option>
+    			                    <option value="@{EnergyWeapons}">Energy Weapons</option>
     			                    <option value="@{FireCombat}">Fire Combat</option>
     			                    <option value="@{MeleeCombat}">Melee Combat</option>
     			                    <option value="@{MissileWeapon}">Missile Weapons</option>
     			                    <option value="@{UnarmedCombat}">Unarmed Combat</option>
+    			                    <option value="@{Alteration}">Alteration</option>
+    			                    <option value="@{Apportation}">Apportation</option>
+    			                    <option value="@{Conjuration}">Conjuration</option>
+    			                    <option value="@{Divination}">Divination</option>
+    			                    <option value="@{Faith}">Faith</option>
+    			                    <option value="@{Kinesis}">Kinesis</option>
+    			                    <option value="@{Precognition}">Kinesis</option>
+    			                    <option value="@{Telepathy}">Telepathy</option>
     			                </select>   
     			            </td>
     					    <td style="width:10%"><input type="text" name="attr_Repeating_Weapon_Damage_Notes" title="WeaponDamageNotes" style="width:100%" /></td>
@@ -547,6 +490,16 @@ Eternity
 	<br>
 	<div class="clear"></div>
 </div>
+<div class="sheet-tab-content sheet-tab6">
+    <br>
+    <table class="spacing"> </tbody> </table>
+    <fieldset class="repeating_Equipment">
+        Name: <input type="text" name="attr_EquipmentName" />
+        Axiom: <input type=number name="attr_EquipmentAxiom" /><br><br>
+        Description<br>
+        <textarea type=text name="attr_EquipmentDescription" title="Equipment Description"></textarea> <br><br>
+	</fieldset>
+</div>
 <div class="sheet-tab-content sheet-tab3">
     <br>
     <fieldset class="repeating_perks">
@@ -556,8 +509,173 @@ Eternity
     </fieldset>
 </div>
 <div class="sheet-tab-content sheet-tab4">
-    <br>
-    <fieldset class="repeating_powers">
+    </table>
+          		</tr>
+				</thead>						
+    			<tbody>
+    	<div class="2colrow">
+		<div class="col">
+          <!-- </table> -->
+			<tr><td><div class="textHead"><b>Magic Skills</b></div></td></tr>
+			<table>
+					<thead>
+						<tr>
+							<th>Skill</th>
+							<th>Adds</th>
+							<th>Mods</th>
+							<th>Attr</th>					
+							<th>Value</th>
+						</tr>
+					</thead>						
+            			<tbody>
+            				<tr>
+    					<td class="skillsCol1">Alteration</td>
+    					<td><input type="number" value="0" name="attr_AlterationAdds" title="Adds" /></td> <!-- Skill Training -->
+    						<td><input type="number" value="0" name="attr_AlterationMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_AlterationAtt" class="modtype" title="Skill Modifier">
+    						  <option value="@{DEX}">DEX</option>
+                              <option value="@{STR}">STR</option>
+    						  <option value="@{MIN}" selected>MIN</option>
+    						  <option value="@{CHA}">CHA</option>
+                              <option value="@{SPI}">SPI</option>
+    						</select></td>
+    					<td><input type="number" name="attr_Alteration" value="@{AlterationAtt}+@{AlterationMod}+@{AlterationAdds}" disabled="true"  class="skills" /></td>						
+                        <td><button type="roll" name="Alteration_roll" value="&{template:skill} {{name=Alteration}} {{value=[[@{Alteration}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Alteration})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				</tr>				
+    				<tr>
+    					<td class="skillsCol1">Apportation</td>
+    					<td><input type="number" value="0" name="attr_ApportationAdds" title="Adds" /></td> <!-- Skill Training -->
+    					<td><input type="number" value="0" name="attr_ApportationMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_ApportationAtt" class="modtype" title="Skill Modifier">
+    						  <option value="@{DEX}">DEX</option>
+                              <option value="@{STR}">STR</option>
+    						  <option value="@{MIN}">MIN</option>
+    						  <option value="@{CHA}">CHA</option>
+                              <option value="@{SPI}" selected>SPI</option>
+    						</select></td>
+    					<td><input type="number" name="attr_Apportation" value="@{ApportationAtt}+@{ApportationMod}+@{ApportationAdds}" disabled="true"  class="skills" /></td>						
+                        <td><button type="roll" name="Apportation_roll" value="&{template:skill} {{name=Apportation}} {{value=[[@{Apportation}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Apportation})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>    				
+    				</tr>				
+    				<tr>
+    					<td class="skillsCol1">Conjuration</td>
+    					<td><input type="number" value="0" name="attr_ConjurationAdds" title="Adds" /></td> <!-- Skill Training -->
+    					<td><input type="number" value="0" name="attr_ConjurationMod" title="Adds" /></td> <!-- Skill Training -->	
+                        <td><select name="attr_ConjurationAtt" class="modtype" title="Skill Modifier">
+    						  <option value="@{DEX}">DEX</option>
+                              <option value="@{STR}">STR</option>
+    						  <option value="@{MIN}">MIN</option>
+    						  <option value="@{CHA}">CHA</option>
+                              <option value="@{SPI}" selected>SPI</option>
+    						</select></td>
+    					<td><input type="number" name="attr_Conjuration" value="@{ConjurationAtt}+@{ConjurationMod}+@{ConjurationAdds}" disabled="true"  class="skills" /></td>						
+    				    <td><button type="roll" name="Conjuration_roll" value="&{template:skill} {{name=Conjuration}} {{value=[[@{Conjuration}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Conjuration})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				</tr>				
+    				<tr>
+    					<td class="skillsCol1">Divination</td>
+    					<td><input type="number" value="0" name="attr_DivinationAdds" title="Adds" /></td> <!-- Skill Training -->
+    					<td><input type="number" value="0" name="attr_DivinationMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_DivinationAtt" class="modtype" title="Skill Modifier">
+    						  <option value="@{DEX}">DEX</option>
+                              <option value="@{STR}">STR</option>
+    						  <option value="@{MIN}" selected>MIN</option>
+    						  <option value="@{CHA}">CHA</option>
+                              <option value="@{SPI}">SPI</option>
+    						</select></td>
+    					<td><input type="number" name="attr_Divination" value="@{DivinationAtt}+@{DivinationMod}+@{DivinationAdds}" disabled="true"  class="skills" /></td>						
+    				    <td><button type="roll" name="Divination_roll" value="&{template:skill} {{name=Divination}} {{value=[[@{Divination}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Divination})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				    </tr>
+            			</tbody>
+                </table>
+           <tr><td><div class="textHead"><b></b></div></td></tr>
+			<table>
+				<thead>
+				</thead>						
+    			<tbody>
+            	</tr>				
+                </tbody>
+            </table>
+		</div>	
+    	<div class="col">
+            <tr><td><div class="textHead"><b>Faith and Psionic Skills</b></div></td></tr>
+			<table>
+				<thead>
+					<tr>
+						<th>Skill</th>
+						<th>Adds</th>
+						<th>Mods</th>
+						<th>Attr</th>					
+						<th>Value</th>
+<!--						Column Reserved for Roll Button, e.g. <th>Roll</th> -->
+					</tr>
+				</thead>						
+    			<tbody>
+            		<tr>
+    					<td class="skillsCol1">Faith</td>
+    					<td><input type="number" value="0" name="attr_FaithAdds" title="Adds" /></td> <!-- Skill Training -->
+    					<td><input type="number" value="0" name="attr_FaithMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_FaithAtt" class="modtype" title="Skill Modifier">
+    						  <option value="@{DEX}">DEX</option>
+                              <option value="@{STR}">STR</option>
+    						  <option value="@{MIN}">MIN</option>
+    						  <option value="@{CHA}">CHA</option>
+                              <option value="@{SPI}" selected>SPI</option>
+    						</select></td>
+    					<td><input type="number" name="attr_Faith" value="@{FaithAtt}+@{FaithMod}+@{FaithAdds}" disabled="true"  class="skills" /></td>						
+    				    <td><button type="roll" name="Faith_roll" value="&{template:skill} {{name=Faith}} {{value=[[@{Faith}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Faith})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				</tr>				
+    				<tr>
+    					<td class="skillsCol1">Kinesis</td>
+    					<td><input type="number" value="0" name="attr_KinesisAdds" title="Adds" /></td> <!-- Skill Training -->
+    					<td><input type="number" value="0" name="attr_KinesisMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_KinesisAtt" class="modtype" title="Skill Modifier">
+    						  <option value="@{DEX}">DEX</option>
+                              <option value="@{STR}">STR</option>
+    						  <option value="@{MIN}">MIN</option>
+    						  <option value="@{CHA}">CHA</option>
+                              <option value="@{SPI}" selected>SPI</option>
+    						</select></td>
+    					<td><input type="number" name="attr_Kinesis" value="@{KinesisAtt}+@{KinesisMod}+@{KinesisAdds}" disabled="true"  class="skills" /></td>						
+    				    <td><button type="roll" name="Kinesis_roll" value="&{template:skill} {{name=Kinesis}} {{value=[[@{Kinesis}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Kinesis})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				</tr>				
+    				<tr>
+    					<td class="skillsCol1">Precognition</td>
+    					<td><input type="number" value="0" name="attr_PrecognitionAdds" title="Adds" /></td> <!-- Skill Training -->
+    					<td><input type="number" value="0" name="attr_PrecognitionMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_PrecognitionAtt" class="modtype" title="Skill Modifier">
+    						  <option value="@{DEX}">DEX</option>
+                              <option value="@{STR}">STR</option>
+    						  <option value="@{MIN}" selected>MIN</option>
+    						  <option value="@{CHA}">CHA</option>
+                              <option value="@{SPI}">SPI</option>
+    						</select></td>
+    					<td><input type="number" name="attr_Precognition" value="@{PrecognitionAtt}+@{PrecognitionMod}+@{PrecognitionAdds}" disabled="true"  class="skills" /></td>						
+    				    <td><button type="roll" name="Precognition_roll" value="&{template:skill} {{name=Precognition}} {{value=[[@{Precognition}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Precognition})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				</tr>				
+    				<tr>
+    					<td class="skillsCol1">Telepathy</td>
+    					<td><input type="number" value="0" name="attr_TelepathyAdds" title="Adds" /></td> <!-- Skill Training -->
+    					<td><input type="number" value="0" name="attr_TelepathyMod" title="Adds" /></td> <!-- Skill Training -->
+                        <td><select name="attr_TelepathyAtt" class="modtype" title="Skill Modifier">
+    						  <option value="@{DEX}">DEX</option>
+                              <option value="@{STR}">STR</option>
+    						  <option value="@{MIN}">MIN</option>
+    						  <option value="@{CHA}" selected>CHA</option>
+                              <option value="@{SPI}">SPI</option>
+    						</select></td>
+    					<td><input type="number" name="attr_Telepathy" value="@{TelepathyAtt}+@{TelepathyMod}+@{TelepathyAdds}" disabled="true"  class="skills" /></td>						
+    				    <td><button type="roll" name="Telepathy_roll" value="&{template:skill} {{name=Telepathy}} {{value=[[@{Telepathy}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Telepathy})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				</tr>				
+                </tr>   
+    			    </tbody>
+    			</table>
+    		</fieldset>
+	</div>
+	</div>
+    <div class="1colrow">
+        <div class="col">
+        	<table>
+        		<tr><div class="textHead">Powers</div></tr>
+    		    <fieldset class="repeating_powers">
         Name: <input type="text" name="attr_PowerName" />
         Type: 
         <select name="attr_PowerType" class="modtype" title="Power Type">
@@ -604,16 +722,6 @@ Eternity
         <textarea type="text" name="attr_PowerDescription" title="PowerDescription"></textarea><br>
         <br><br>
     </fieldset>
-</div>
-<div class="sheet-tab-content sheet-tab6">
-    <br>
-    <table class="spacing"> </tbody> </table>
-    <fieldset class="repeating_Equipment">
-        Name: <input type="text" name="attr_EquipmentName" />
-        Axiom: <input type=number name="attr_EquipmentAxiom" /><br><br>
-        Description<br>
-        <textarea type=text name="attr_EquipmentDescription" title="Equipment Description"></textarea> <br><br>
-	</fieldset>
 </div>
 
 <rolltemplate class="sheet-rolltemplate-skill">
