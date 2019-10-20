@@ -1,5 +1,4 @@
-
-           <div class="record"><img height="25" width="75" src="https://s3.amazonaws.com/files.d20.io/images/3792926/fZmnHs3Mz7uTZ8C3uic84A/med.gif?1398003568"/> <br/>
+<div class="record"><img height="25" width="75" src="https://s3.amazonaws.com/files.d20.io/images/3792926/fZmnHs3Mz7uTZ8C3uic84A/med.gif?1398003568"/> <br/>
 Eternity
             <!-- Character Record Sheet -->
 </div>
@@ -43,20 +42,44 @@ Eternity
 			</table>
             <table class="spacing">
                 <tr colspan="10"></tr>
-                <tr><th>Possibilities</th> <th>CV</th> <th>XP Unspent/Total</th> <th>Walk/Run</th> <th>XP Toughness/Armor</th> <th>Magic</th> <th>Social</th><th>Spiritual</th><th>Tech</th>  </tr>
+                <tr> <th>Roll</th> <th>Pos</th> <th>AY</th> <th>CE</th> <th>CP</th> <th>LL</th> <th>NE</th> <th>OR</th> <th>PP</th> <th>TH</th> </tr>
+                </tr>
                 <tr>
-    				<td>
-    				    <input type="number" name="attr_Possib" value="3" title="Possibilties" />
-    				    <button type="roll" name="possibility-roll" value="&{template:possibility} {{previousroll=?{PreviousRoll}}} {{newroll=[[?{PreviousRoll}+({1d20!10!!20cs10cs,10 + 0d0}kh1)]]}}" />
-    				</td>
-    				<td width="10%"><input type="number" name="attr_CV" value="0" title="CyberValue" /></td>
+    				<td width="10%"><button type="roll" name="possibility-roll" value="&{template:possibility} {{previousroll=?{PreviousRoll}}} {{newroll=[[?{PreviousRoll}+({1d20!10!!20cs10cs,10 + 0d0}kh1)]]}}" />	</td>
+    		       	<td width="10%"><input type="number" name="attr_Possib" value="3" title="Pos" /></td>
+    		       	<td width="10%"><input type="number" name="attr_AYPossib" value="0" title="AY" /></td>
+    				<td width="10%"><input type="number" name="attr_CEPossib" value="0" title="CE" /></td>
+    				<td width="10%"><input type="number" name="attr_CPPossib" value="0" title="CP" /></td>
+    				<td width="10%"><input type="number" name="attr_LLPossib" value="0" title="LL" /></td>
+    				<td width="10%"><input type="number" name="attr_NEPossib" value="0" title="NE" /></td>
+    				<td width="10%"><input type="number" name="attr_ORPossib" value="0" title="OR" /></td>
+    				<td width="10%"><input type="number" name="attr_PPPossib" value="0" title="PP" /></td>
+    				<td width="10%"><input type="number" name="attr_THPossib" value="0" title="TH" /></td>
+    			</tr>	
+    		</table>
+            <table class="spacing">
+                <tr colspan= "9"></tr>
+                <tr><th>Clearance</th> <th>XP</th> <th>Walk/Run</th> <th>Toughness/Armor</th> <th>Size</th> <th>Magic</th> <th>Social</th><th>Spiritual</th><th>Tech</th>  </tr>
+                <tr>
+    				<td width="15%"><input type="text" name="attr_Clearance" style="width:100%" title="CyberValue" /></td>
     				<td><input type="number" name="attr_UnspentXP" value="0" title="Unspent XP"> / <input type="number" name="attr_TotalXP" value="0" title="Total XP"></td>
     				<td width="15%"><input type="number" name="attr_Movement" value="0" title="Movement" />/<input type="number" name="attr_Run" value="0" title="Movement Max" /></td>
     				<td width="15%"><input type="number" name="attr_Toughness" value="0" title="Toughness" />/<input type="number" name="attr_TotalArmor" value="0" title="Movement Max" /></td>
+					<td width="10%"><input type="number" name="attr_Size" value="0"  title="Size" /></td>
 					<td width="5%"><input type="number" name="attr_Magic" value="0"  title="Magic" /></td>
 					<td width="5%"><input type="number" name="attr_Social" value="0" title="Social"  /></td>
                     <td width="5%"><input type="number" name="attr_Spiritual" value="0"  title="Spiritual" /></td>
     				<td width="5%"><input type="number" name="attr_Tech" value="0" title="Tech"  /></td></tr>
+            </table>
+             <table class="spacing">
+                <tr colspan= "9"></tr>
+                <tr><th>Stymied/VStymied</th> <th>Vulnerable/VVulnerable</th> <th>Aim</th> <th>All-Out-Attack</th> <th>S/L/H Burst</th>  </tr>
+                <tr>
+    				<td width="10%"><input type="checkbox" name="attr_Sty" value="2" title="Stymied" />/<input type="checkbox" name="attr_VSty" value="4" title="Very Stymied" /></td>
+    				<td width="10%"><input type="checkbox" name="attr_Vul" value="2" title="Vulnerable" />/<input type="checkbox" name="attr_VVul" value="4" title="Very Vulnerable" /></td>
+    				<td width="5%"><input type="checkbox" name="attr_Aim" value="4"  title="Aim" /></td>
+    				<td width="10%"><input type="checkbox" name="attr_AoA" value="4"  title="AllOutAttack" /></td>
+    				<td width="15%"><input type="checkbox" name="attr_SB" value="2"  title="Short Burst" />/<input type="checkbox" name="attr_LB" value="4"  title="LongBurst" />/<input type="checkbox" name="attr_HB" value="6"  title="Heavy Burst" /></td>
             </table>
 </div>
 	<hr/>
@@ -75,7 +98,7 @@ Eternity
 					<td><input type="number" name="attr_CHABase" value="8" title="CharismaBase" /></td>
 					<td><input type="number" name="attr_CHAMod" value="0" title="CharismaMod" /></td>
 					<td><input type="number" name="attr_CHA" value="@{CHABase}+@{CHAMod}" disabled="true"  class="3" /></td>
-					<td><button type="roll" name="charisma-test" value="&{template:skill} {{name=Charisma}} {{value=[[@{CHA}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{CHA})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+					<td><button type="roll" name="charisma-test" value="&{template:skill} {{name=Charisma}} {{value=[[@{CHA}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{CHA}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
 				    <!-- <td class="col1">Taunt</td> -->
     			</tr>
     			<tr>
@@ -83,14 +106,14 @@ Eternity
     				<td><input type="number" name="attr_DEXBase" value="8" title="DexterityBase" /></td>
     				<td><input type="number" name="attr_DEXMod" value="0" title="DexterityMod" /></td>
 					<td><input type="number" name="attr_DEX" value="@{DEXBase}+@{DEXMod}" disabled="true"  class="3" /></td>							
-    				<td><button type="roll" name="dexterity-test" value="&{template:skill} {{name=Dexterity}} {{value=[[@{DEX}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{DEX})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td><!-- <td class="col1">Maneuver</td> -->
+    				<td><button type="roll" name="dexterity-test" value="&{template:skill} {{name=Dexterity}} {{value=[[@{DEX}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{DEX}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td><!-- <td class="col1">Maneuver</td> -->
 				</tr>
 				<tr>
 					<td class="col1">MIND</td>
 					<td><input type="number" name="attr_MINBase" value="8" title="MindBase" /></td>
 					<td><input type="number" name="attr_MINMod" value="0" title="MindMod" /></td>
 					<td><input type="number" name="attr_MIN" value="@{MINBase}+@{MINMod}" disabled="true"  class="3" /></td>
-					<td><button type="roll" name="mind-test" value="&{template:skill} {{name=Mind}} {{value=[[@{MIN}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{MIN})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+					<td><button type="roll" name="mind-test" value="&{template:skill} {{name=Mind}} {{value=[[@{MIN}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{MIN}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
 				    <!-- <td class="col1">Test</td> -->
 				</tr>
 				<tr>
@@ -98,7 +121,7 @@ Eternity
 					<td><input type="number" name="attr_SPIBase" value="8" title="SpiritBase" /></td>
 					<td><input type="number" name="attr_SPIMod" value="0" title="SpiritMod" /></td>
 					<td><input type="number" name="attr_SPI" value="@{SPIBase}+@{SPIMod}" disabled="true"  class="3" /></td>
-					<td><button type="roll" name="spirit-test" value="&{template:skill} {{name=Spirit}} {{value=[[@{SPI}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{SPI})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+					<td><button type="roll" name="spirit-test" value="&{template:skill} {{name=Spirit}} {{value=[[@{SPI}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{SPI}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
 				    <!-- <td class="col1">Intimidate</td> -->
     			</tr>
                 <tr>
@@ -106,7 +129,7 @@ Eternity
 					<td><input type="number" name="attr_STRBase" value="8" title="StrengthBase" /></td>
 					<td><input type="number" name="attr_STRMod" value="0" title="StrengthMod" /></td>
 					<td><input type="number" name="attr_STR" value="@{STRBase}+@{STRMod}" disabled="true"  class="3" /></td>
-					<td><button type="roll" name="strength-test" value="&{template:skill} {{name=Strength}} {{value=[[@{STR}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{STR})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+					<td><button type="roll" name="strength-test" value="&{template:skill} {{name=Strength}} {{value=[[@{STR}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{STR}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
 				</tr>
 				<!--                <tr>
                     <td></td>
@@ -121,7 +144,7 @@ Eternity
             	 <tbody>  
                         <tr><td width="100%"><div class="textHead"><b>Damage</b></div></td></tr>
                         <tr><td class="col1">Shock:   <input width="100%" type="number" name="attr_shock" title="Shock Dmg" /> / <input type="number" name="attr_shock_max" /></tr>
-                        <tr><td class="col1">Wounds: <input type="number" value="0" name="attr_wnd"/> / <input type="number" name="attr_wnd_max" /></td></tr>
+                        <tr><td class="col1">Wounds: 0 <input type="radio" value="0" name="attr_wnd"/> 1 <input type="radio" value="1" name="attr_wnd"/> 2 <input type="radio" value="2" name="attr_wnd"/> 3 <input type="radio" value="3" name="attr_wnd"/> / 4 <input type="radio" value="4" name="attr_wnd"/> 5 <input type="radio" value="5" name="attr_wnd"/> 
     		    </tbody>
     	    </table>
 			<table class="spacing">
@@ -153,21 +176,25 @@ Eternity
 		<div class="col">
     		<table class="spacing">
 			  <tbody>
-				<tr><td><div class="textHead"><b>Defenses</b></div></td>	
+				<tr><td><div class="textHead"><b>Defenses</b></div></td>
+				<td><div class="textHead">Mod</div></td>
     			<td><div class="textHead">Value</div></td>
     			<td><button type="roll" name="defense-bonus" value="&{template:defensebonus} {{newroll=[[1d20!10!!20cs10cs>20]]}}" /></td>
 				</tr>
 				<tr>
     				<td class="col1">Dodge</td>
-					<td><input type="number" name="attr_Dodge_Defense" value="@{dodgeAtt}+@{DodgeMod}+@{DodgeAdds}" disabled="true"  class="skills" /></td>
+    				<td><input type="number" name="attr_dodMod" value="0" title="DodgeMod" /></td>
+					<td><input type="number" name="attr_Dodge_Defense" value="@{dodgeAtt}+@{DodgeAdds}-@{Vul}-@{VVul}+@{Size}+@{dodMod}" disabled="true"  class="skills" /></td>
 				</tr>
                 <tr>
 					<td class="col1">Melee</td>
-					<td><input type="number" name="attr_Melee_Defense" value="@{MeleeCombatAtt}+@{MeleeCombatMod}+@{MeleeCombatAdds}" disabled="true" class="skills" /></td>
+					<td><input type="number" name="attr_melMod" value="0" title="MeleeMod" /></td>
+					<td><input type="number" name="attr_Melee_Defense" value="@{MeleeCombatAtt}+@{MeleeCombatAdds}-@{Vul}-@{VVul}+@{Size}+@{melMod}" disabled="true" class="skills" /></td>
 				</tr>
 				<tr>
 					<td class="col1">Unarmed</td>
-					<td><input type="number" name="attr_Unarmed_Defense" value="@{UnarmedCombatAtt}+@{UnarmedCombatMod}+@{UnarmedCombatAdds}" disabled="true" class="skills" /></td>
+					<td><input type="number" name="attr_UnaMod" value="0" title="UnarmedMod" /></td>
+					<td><input type="number" name="attr_Unarmed_Defense" value="@{UnarmedCombatAtt}+@{UnarmedCombatAdds}-@{Vul}-@{VVul}+@{Size}+@{unaMod}" disabled="true" class="skills" /></td>
 				</tr>
 			  </tbody>
 			</table>
@@ -201,7 +228,7 @@ Eternity
                               <option value="@{SPI}">SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Dodge" value="@{DodgeAtt}+@{DodgeMod}+@{DodgeAdds}" disabled="true"  class="skills" /></td>
-    					<td><button type="roll" name="dodge_test" value="&{template:skill} {{name=Dodge}} {{value=[[@{Dodge}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Dodge})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    					<td><button type="roll" name="dodge_test" value="&{template:skill} {{name=Dodge}} {{value=[[@{Dodge}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Dodge}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>
             				<tr>
             					<td class="skillsCol1">Energy Weapons</td>
@@ -215,7 +242,7 @@ Eternity
                                       <option value="@{SPI}">SPI</option>
             						</select></td>
             					<td><input type="number" name="attr_EnergyWeapons" value="@{EnergyWeaponsAtt}+@{EnergyWeaponsMod}+@{EnergyWeaponsAdds}" disabled="true"  class="skills" /></td>
-            					<td><button type="roll" name="EnergyWeapons_attack" value="&{template:skill} {{name=Energy Weapons}} {{value=[[@{EnergyWeapons}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{EnergyWeapons})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+            					<td><button type="roll" name="EnergyWeapons_attack" value="&{template:skill} {{name=Energy Weapons}} {{value=[[@{EnergyWeapons}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{EnergyWeapons}-@{Sty}-@{VSty}-@{wnd}+@{Aim}+@{SB}+@{LB}+@{HB})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
             				</tr>				
             				<tr>
             					<td class="skillsCol1">Fire Combat</td>
@@ -229,8 +256,8 @@ Eternity
                                       <option value="@{SPI}">SPI</option>
             						</select></td>
             					<td><input type="number" name="attr_FireCombat" value="@{FireCombatAtt}+@{FireCombatMod}+@{FireCombatAdds}" disabled="true"  class="skills" /></td>
-            					<td><button type="roll" name="FireCombat_attack" value="&{template:skill} {{name=Fire Combat}} {{value=[[@{FireCombat}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{FireCombat})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
-            				</tr>				
+            					<td><button type="roll" name="FireCombat_attack" value="&{template:skill} {{name=Fire Combat}} {{value=[[@{FireCombat}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{FireCombat}-@{Sty}-@{VSty}-@{wnd}+@{Aim}+@{SB}+@{LB}+@{HB})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+            				</tr>						
             				<tr>
             					<td class="skillsCol1">Melee Combat</td>
             					<td><input type="number" value="0" name="attr_MeleeCombatAdds" title="Adds" /></td> <!-- Skill Training -->
@@ -243,7 +270,7 @@ Eternity
                                       <option value="@{SPI}">SPI</option>
             						</select></td>
             					<td><input type="number" name="attr_MeleeCombat" value="@{MeleeCombatAtt}+@{MeleeCombatMod}+@{MeleeCombatAdds}" disabled="true"  class="skills" /></td>
-            					<td><button type="roll" name="MeleeCombat_attack" value="&{template:skill} {{name=Melee Combat}} {{value=[[@{MeleeCombat}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{MeleeCombat})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+            					<td><button type="roll" name="MeleeCombat_attack" value="&{template:skill} {{name=Melee Combat}} {{value=[[@{MeleeCombat}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{MeleeCombat}-@{Sty}-@{VSty}-@{wnd}+@{AoA})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
             				</tr>				
             				<tr>
             					<td class="skillsCol1">Missile Weapons</td>
@@ -257,7 +284,7 @@ Eternity
                                       <option value="@{SPI}">SPI</option>
             						</select></td>
             					<td><input type="number" name="attr_MissileWeapon" value="@{MissileWeaponAtt}+@{MissileWeaponMod}+@{MissileWeaponAdds}" disabled="true"  class="skills" /></td>
-            					<td><button type="roll" name="MissileWeapon_attack" value="&{template:skill} {{name=Missile Weapon}} {{value=[[@{MissileWeapon}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{MissileWeapon})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+            					<td><button type="roll" name="MissileWeapon_attack" value="&{template:skill} {{name=Missile Weapon}} {{value=[[@{MissileWeapon}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{MissileWeapon}-@{Sty}-@{VSty}-@{wnd}+@{Aim}+@{SB}+@{LB}+@{HB})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
             				</tr>				
             				<tr>
             					<td class="skillsCol1">Unarmed Combat</td>
@@ -271,7 +298,7 @@ Eternity
                                       <option value="@{SPI}">SPI</option>
             						</select></td>
             					<td><input type="number" name="attr_UnarmedCombat" value="@{UnarmedCombatAtt}+@{UnarmedCombatMod}+@{UnarmedCombatAdds}" disabled="true"  class="skills" /></td>
-            					<td><button type="roll" name="UnarmedCombat_attack" value="&{template:skill} {{name=Unarmed Combat}} {{value=[[@{UnarmedCombat}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{UnarmedCombat})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+            					<td><button type="roll" name="UnarmedCombat_attack" value="&{template:skill} {{name=Unarmed Combat}} {{value=[[@{UnarmedCombat}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{UnarmedCombat}-@{Sty}-@{VSty}-@{wnd}+@{AoA})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
             				</tr>
             			</tbody>
                 </table>
@@ -300,7 +327,7 @@ Eternity
                               <option value="@{SPI}" selected>SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Intimidate" value="@{IntimidateAtt}+@{IntimidateMod}+@{IntimidateAdds}" disabled="true"  class="skills" /></td>						
-                        <td><button type="roll" name="intimidate_attack" value="&{template:skill} {{name=Intimidate}} {{value=[[@{Intimidate}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Intimidate})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+                        <td><button type="roll" name="intimidate_attack" value="&{template:skill} {{name=Intimidate}} {{value=[[@{Intimidate}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Intimidate}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Taunt</td>
@@ -314,7 +341,7 @@ Eternity
                               <option value="@{SPI}">SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Taunt" value="@{TauntAtt}+@{TauntMod}+@{TauntAdds}" disabled="true"  class="skills" /></td>						
-                        <td><button type="roll" name="taunt_attack" value="&{template:skill} {{name=Taunt}} {{value=[[@{Taunt}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Taunt})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>    				
+                        <td><button type="roll" name="taunt_attack" value="&{template:skill} {{name=Taunt}} {{value=[[@{Taunt}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Taunt}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>    				
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Trick</td>
@@ -328,7 +355,7 @@ Eternity
                               <option value="@{SPI}">SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Trick" value="@{TrickAtt}+@{TrickMod}+@{TrickAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="trick_attack" value="&{template:skill} {{name=Trick}} {{value=[[@{Trick}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Trick})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				    <td><button type="roll" name="trick_attack" value="&{template:skill} {{name=Trick}} {{value=[[@{Trick}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Trick}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Maneuver</td>
@@ -342,7 +369,7 @@ Eternity
                               <option value="@{SPI}">SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Maneuver" value="@{ManeuverAtt}+@{ManeuverMod}+@{ManeuverAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="maneuver_attack" value="&{template:skill} {{name=Maneuver}} {{value=[[@{Maneuver}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Maneuver})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				    <td><button type="roll" name="maneuver_attack" value="&{template:skill} {{name=Maneuver}} {{value=[[@{Maneuver}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Maneuver}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>
             	</tbody>
             </table>
@@ -373,7 +400,7 @@ Eternity
                               <option value="@{SPI}">SPI</option>
     						</select></td>
     				<td><input type="number" name="attr_Reality" value="@{RealityAtt}+@{RealityMod}+@{RealityAdds}" disabled="true"  class="skills" /></td>  
-                    <td><button type="roll" name="reality_test" value="&{template:skill} {{name=Reality}} {{value=[[@{Reality}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Reality})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+                    <td><button type="roll" name="reality_test" value="&{template:skill} {{name=Reality}} {{value=[[@{Reality}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Reality}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
                     
                 </tbody>
             </table>
@@ -402,7 +429,7 @@ Eternity
                               <option value="@{SPI}">SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Find" value="@{FindAtt}+@{FindMod}+@{FindAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Find_attack" value="&{template:skill} {{name=Find}} {{value=[[@{Find}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Find})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				    <td><button type="roll" name="Find_attack" value="&{template:skill} {{name=Find}} {{value=[[@{Find}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Find}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>	
             			    <tr>
     			</tbody>
@@ -422,7 +449,7 @@ Eternity
                               <option value="@{SPI}">SPI</option>
     						</select></td>
     					    <td><input type="number" name="attr_RepeatingSkill" value="@{RepeatingSkillAtt}+@{RepeatingSkillMod}+@{RepeatingSkillAdds}" disabled="true"  class="skills" /></td>	
-                            <td><button type="roll" name="repeating_skill" value="&{template:skill} {{name=@{RepeatingSkillName}}} {{value=[[@{RepeatingSkill}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{RepeatingSkill})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+                            <td><button type="roll" name="repeating_skill" value="&{template:skill} {{name=@{RepeatingSkillName}}} {{value=[[@{RepeatingSkill}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{RepeatingSkill}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     			        </tr>   
     			    </tbody>
     			</table>
@@ -454,7 +481,7 @@ Eternity
                 <table>
                     <tbody>    
     			        <tr>
-    			            <td style="width:5%"><button type="roll" name="repeating_attack" value="&{template:attack} {{name=@{RepeatingWeaponName}}} {{range=@{Repeating_Weapon_Range}}} {{value=[[@{RepeatingWeaponSkill}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{RepeatingWeaponSkill})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial} {{notes=@{Repeating_Weapon_Notes}}}" /></td>
+    			            <td style="width:5%"><button type="roll" name="repeating_attack" value="&{template:attack} {{name=@{RepeatingWeaponName}}} {{range=@{Repeating_Weapon_Range}}} {{value=[[@{RepeatingWeaponSkill}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{RepeatingWeaponSkill}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial} {{notes=@{Repeating_Weapon_Notes}}}" /></td>
     			            <td style="width:17%" class="weaponsCol1"> <input type="text" style="width:100%" name="attr_RepeatingWeaponName" /> </td>
     			            <td style="width:3%"><input type="number" value="0" name="attr_RepeatingWeaponAxiom" title="RepeatingWeaponAxiom" /></td>
     			            <td style="width:17%">
@@ -540,7 +567,7 @@ Eternity
                               <option value="@{SPI}">SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Alteration" value="@{AlterationAtt}+@{AlterationMod}+@{AlterationAdds}" disabled="true"  class="skills" /></td>						
-                        <td><button type="roll" name="Alteration_roll" value="&{template:skill} {{name=Alteration}} {{value=[[@{Alteration}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Alteration})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+                        <td><button type="roll" name="Alteration_roll" value="&{template:skill} {{name=Alteration}} {{value=[[@{Alteration}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Alteration}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Apportation</td>
@@ -554,7 +581,7 @@ Eternity
                               <option value="@{SPI}" selected>SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Apportation" value="@{ApportationAtt}+@{ApportationMod}+@{ApportationAdds}" disabled="true"  class="skills" /></td>						
-                        <td><button type="roll" name="Apportation_roll" value="&{template:skill} {{name=Apportation}} {{value=[[@{Apportation}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Apportation})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>    				
+                        <td><button type="roll" name="Apportation_roll" value="&{template:skill} {{name=Apportation}} {{value=[[@{Apportation}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Apportation}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>    				
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Conjuration</td>
@@ -568,7 +595,7 @@ Eternity
                               <option value="@{SPI}" selected>SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Conjuration" value="@{ConjurationAtt}+@{ConjurationMod}+@{ConjurationAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Conjuration_roll" value="&{template:skill} {{name=Conjuration}} {{value=[[@{Conjuration}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Conjuration})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				    <td><button type="roll" name="Conjuration_roll" value="&{template:skill} {{name=Conjuration}} {{value=[[@{Conjuration}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Conjuration}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Divination</td>
@@ -582,7 +609,7 @@ Eternity
                               <option value="@{SPI}">SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Divination" value="@{DivinationAtt}+@{DivinationMod}+@{DivinationAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Divination_roll" value="&{template:skill} {{name=Divination}} {{value=[[@{Divination}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Divination})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				    <td><button type="roll" name="Divination_roll" value="&{template:skill} {{name=Divination}} {{value=[[@{Divination}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Divination}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				    </tr>
             			</tbody>
                 </table>
@@ -621,7 +648,7 @@ Eternity
                               <option value="@{SPI}" selected>SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Faith" value="@{FaithAtt}+@{FaithMod}+@{FaithAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Faith_roll" value="&{template:skill} {{name=Faith}} {{value=[[@{Faith}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Faith})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				    <td><button type="roll" name="Faith_roll" value="&{template:skill} {{name=Faith}} {{value=[[@{Faith}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Faith}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Kinesis</td>
@@ -635,7 +662,7 @@ Eternity
                               <option value="@{SPI}" selected>SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Kinesis" value="@{KinesisAtt}+@{KinesisMod}+@{KinesisAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Kinesis_roll" value="&{template:skill} {{name=Kinesis}} {{value=[[@{Kinesis}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Kinesis})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				    <td><button type="roll" name="Kinesis_roll" value="&{template:skill} {{name=Kinesis}} {{value=[[@{Kinesis}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Kinesis}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Precognition</td>
@@ -649,7 +676,7 @@ Eternity
                               <option value="@{SPI}">SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Precognition" value="@{PrecognitionAtt}+@{PrecognitionMod}+@{PrecognitionAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Precognition_roll" value="&{template:skill} {{name=Precognition}} {{value=[[@{Precognition}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Precognition})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				    <td><button type="roll" name="Precognition_roll" value="&{template:skill} {{name=Precognition}} {{value=[[@{Precognition}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Precognition}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>				
     				<tr>
     					<td class="skillsCol1">Telepathy</td>
@@ -663,7 +690,7 @@ Eternity
                               <option value="@{SPI}">SPI</option>
     						</select></td>
     					<td><input type="number" name="attr_Telepathy" value="@{TelepathyAtt}+@{TelepathyMod}+@{TelepathyAdds}" disabled="true"  class="skills" /></td>						
-    				    <td><button type="roll" name="Telepathy_roll" value="&{template:skill} {{name=Telepathy}} {{value=[[@{Telepathy}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Telepathy})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
+    				    <td><button type="roll" name="Telepathy_roll" value="&{template:skill} {{name=Telepathy}} {{value=[[@{Telepathy}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{Telepathy}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}" /></td>
     				</tr>				
                 </tr>   
     			    </tbody>
@@ -684,7 +711,7 @@ Eternity
 			<option value="@{Psionic}">Psionic</option>
 			<option value="@{Other}">Other</option>
 		</select> 
-		<button type="roll" name="power-test" value="&{template:power} {{name=@{PowerName}}} {{duration=@{PowerDuration}}} {{casting=@{PowerCastingTime}}} {{range=@{PowerRange}}} {{duration=@{PowerDuration}}} {{skill=[[@{PowerSkill}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{PowerSkill})+0d0]]}} {{standard=@{PowerStandardSuccess}}} {{good=@{PowerGoodSuccess}}} {{outstanding=@{PowerOutstandingSuccess}}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}"></button>
+		<button type="roll" name="power-test" value="&{template:power} {{name=@{PowerName}}} {{duration=@{PowerDuration}}} {{casting=@{PowerCastingTime}}} {{range=@{PowerRange}}} {{duration=@{PowerDuration}}} {{skill=[[@{PowerSkill}+0d0]]}} {{difficulty=?{Difficulty|10}}} {{success=[[?{Difficulty}-(@{PowerSkill}-@{Sty}-@{VSty}-@{wnd})+0d0]]}} {{standard=@{PowerStandardSuccess}}} {{good=@{PowerGoodSuccess}}} {{outstanding=@{PowerOutstandingSuccess}}} {{torgroll=[[1d20!10!!20cs10cs>20 @{rolltracker}]]}} @{rollspecial}"></button>
 		<br>
 		Axiom Level: <input type="number" name="attr_PowerAxiom" title="Axiom Level" /><br>
 		Skill: <select name="attr_PowerSkill" class="modtype" title="Power Skill" style="width: 125px;">
